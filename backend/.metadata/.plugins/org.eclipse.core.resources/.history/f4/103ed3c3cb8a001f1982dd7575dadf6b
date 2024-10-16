@@ -1,0 +1,66 @@
+package com.employee.admin.config;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
+import com.employee.entities.Admin;
+import com.employee.service.AdminService;
+
+@Configuration
+@EnableWebSecurity
+public class AdminConfig {
+
+	  private AdminService adminService; // Use constructor injection
+	
+	   @Autowired
+	    public void setAdminService(AdminService adminService) {
+	        this.adminService = adminService; // Setter injection
+	    }
+	 
+	 
+	 @Bean
+	    public PasswordEncoder passwordEncoder() {
+	        return new BCryptPasswordEncoder();
+	    }
+
+	    @Bean
+	    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	        http
+	            .csrf(csrf -> csrf.disable()) // Updated method
+	            .authorizeHttpRequests(auth -> auth
+	                .requestMatchers("/register", "/login").permitAll() // Updated method
+	                .anyRequest().authenticated()
+	            )
+	            .formLogin(form -> form
+	                .loginProcessingUrl("/login")
+	                .defaultSuccessUrl("/", true)
+	            )
+	            .logout(logout -> logout
+	                .logoutUrl("/logout")
+	                .logoutSuccessUrl("/")
+	            );
+
+	        return http.build();
+	    }
+
+         @Autowired
+	    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	        auth.userDetailsService(username -> {
+	            Admin admin = adminService.findByUsername(username);
+	            if (admin == null) {
+	                throw new UsernameNotFoundException("User not found");
+	            }
+	            return new org.springframework.security.core.userdetails.User(admin.getUsername(), admin.getPassword(), new ArrayList<>());
+	        }).passwordEncoder(passwordEncoder());
+	    }
+}

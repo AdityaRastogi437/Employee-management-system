@@ -1,0 +1,5 @@
+package com.employee.admin.config;
+
+public class SecurityConfig {
+
+}
