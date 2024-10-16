@@ -40,9 +40,35 @@
 	<li><h4>Postman for test RESTAPI by performing CRUD operation (Create,Read,Update,Delete)</h4></li>
 </ul>
 
+<h1>ScreenShots of the Project</h1>
+
+<h3>Dashboard Page</h3>
 
 
- 
+![dashboard](https://github.com/user-attachments/assets/6d1c3669-f7a4-4dde-ad5d-a5ca18f27615)
+
+<h3>All Employees Page</h3>
+
+
+![AllEmployee](https://github.com/user-attachments/assets/e923111c-2168-4b9a-ac84-6952b181cde6)
+
+
+<h3>Add Employee Page</h3>
+
+![AddEmployee](https://github.com/user-attachments/assets/27c22571-0b11-4824-b64c-94348677660d)
+
+<h3>Edit Employee Page</h3>
+
+ ![EditEmployee](https://github.com/user-attachments/assets/509a3803-945b-4b70-99d2-556fab2333b5)
+
+<h3>All Departments Page</h3>
+
+![AllDepartments](https://github.com/user-attachments/assets/acfdf036-e925-43aa-af2c-28c195e82fcd)
+
+<h3>Add Department Page</h3>
+
+![AddDepartment](https://github.com/user-attachments/assets/c770a693-6057-4765-94d5-2ad54b17a117)
+
  </body>
 </html>
 
