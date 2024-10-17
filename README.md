@@ -4,7 +4,11 @@
 </head>
  <body>
 	<h1>Employee Management System :-   Backend - SpringBoot & Mysql  and  Frontend - ReactJs with Bootstrap</h1>
-<h1>Summary</h1>
+	 
+	
+ 
+
+ 
 <ul>
 	<li><h3>I have developed a Employee Management System Project using Springboot and mySql in backend and ReactJs and Bootstap in frontend with axios.<h3></li>
 	<li><h3>Its a RESTful API  tested with Postman and integrated it with React using axios.<h3> </li>
@@ -68,6 +72,28 @@
 <h3>Add Department Page</h3>
 
 ![AddDepartment](https://github.com/user-attachments/assets/c770a693-6057-4765-94d5-2ad54b17a117)
+
+<h1>Testing of RestAPI by Postman , Perform all Create,Update,Read and Delete Operation</h1>
+
+<h3>Get Request(get All employees data from database with the help of restAPI) </h3>
+
+![postmanGetEmployees](https://github.com/user-attachments/assets/771428ba-65a2-4d79-acc5-8eccccda225c)
+
+
+<h3>Post Request(add employee in the database with the help of restAPI)</h3>
+
+![postmanAddEmployee](https://github.com/user-attachments/assets/988b6ea7-8144-4c0e-8bc0-ca766ed443fd)
+
+<h3>Put Request(Update employee in the database with the help of restAPI)</h3>
+
+![postmanUpdateEmployee](https://github.com/user-attachments/assets/bb1ffe64-2c66-4da0-b946-ccbfbf9ad9ad)
+
+<h3>Delete Request(Delete employee in the database with the help of restAPI)</h3>
+
+![postmanDeleteEmployee](https://github.com/user-attachments/assets/3df38da7-5bd2-4a74-9a3c-fb86ff4e7cb1)
+
+
+=><h3>also Performed same Operations with the Department details ..</h3>
 
  </body>
 </html>
