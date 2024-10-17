@@ -4,11 +4,14 @@
 </head>
  <body>
 	<h1>Employee Management System :-   Backend - SpringBoot & Mysql  and  Frontend - ReactJs with Bootstrap</h1>
-	 
-	
- 
 
- 
+
+
+<h1><img src="https://github.com/user-attachments/assets/81d58279-045a-47d5-abd9-f5766e553ffa" alt="text-file" height="35" width="40"  >Summary</h1>	
+	
+
+</div>
+
 <ul>
 	<li><h3>I have developed a Employee Management System Project using Springboot and mySql in backend and ReactJs and Bootstap in frontend with axios.<h3></li>
 	<li><h3>Its a RESTful API  tested with Postman and integrated it with React using axios.<h3> </li>
@@ -16,7 +19,7 @@
 	<li><h3>In this project we can Create ,Read,Update and Delete Employee Information as well as Department of the employees.<h3></li>
 </ul>
 
-<h1>Software Requirements</h1>
+<h1><img src="https://github.com/user-attachments/assets/db2c8bdb-e8dd-410b-abd3-48ae69a77608" alt="software"  height="35" width="40" >Software Requirements</h1>
 <h2>frontend & Backend Requirements</h2>
 <h3>Programming Languages</h3>
 <ul>
@@ -44,7 +47,7 @@
 	<li><h4>Postman for test RESTAPI by performing CRUD operation (Create,Read,Update,Delete)</h4></li>
 </ul>
 
-<h1>ScreenShots of the Project</h1>
+<h1><img src="https://github.com/user-attachments/assets/0036b105-477e-4bf8-958e-68ba5f44f79d" alt="screenshots" height="35" width="40">ScreenShots of the Project</h1>
 
 <h3>Dashboard Page</h3>
 
