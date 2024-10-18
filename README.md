@@ -96,8 +96,6 @@
 ![postmanDeleteEmployee](https://github.com/user-attachments/assets/3df38da7-5bd2-4a74-9a3c-fb86ff4e7cb1)
 
 
-=><h3>also Performed same Operations with the Department details ..</h3>
-
  </body>
 </html>
 
