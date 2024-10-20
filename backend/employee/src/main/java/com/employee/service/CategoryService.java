@@ -21,8 +21,14 @@ public class CategoryService {
 	}
 	
 	
-	public void deleteCategory(int id) {
-		 categoryRepo.deleteById(id);;
+	public String deleteCategory(int id) {
+		
+		if(!categoryRepo.existsById(id))
+		{
+			throw new NotFoundException(id, "category");
+		}
+		categoryRepo.deleteById(id);
+	        return "User with the id " + id + " has been successfully deleted.";
 	}
 	
 	public List<Category> getAllCategory()
@@ -31,25 +37,19 @@ public class CategoryService {
 		return cat;
 	}
 	
-	public void updateCategory(Category category, int id) {
+	public Category updateCategory(Category newCategory, int id) {
 		
-		category.setId(id);
-		categoryRepo.save(category);
+		return categoryRepo.findById(id)
+		.map(category->{
+			category.setName(newCategory.getName());
+			return categoryRepo.save(category);
+		}).orElseThrow(()->new NotFoundException(id,"category"));
 		
 	}
 	
 	public Category getCategoryById(int id) {
-		Category category=null;
-		try
-		{
-			category=this.categoryRepo.findById(id);
-			
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		return category;
+		return categoryRepo.findById(id)
+		.orElseThrow(()->new NotFoundException(id, "category"));
 		
 	}
 	

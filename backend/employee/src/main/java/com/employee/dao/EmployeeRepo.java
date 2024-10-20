@@ -9,7 +9,7 @@ import com.employee.entities.Employee;
 @Repository
 public interface EmployeeRepo extends JpaRepository<Employee, Integer>{
 
-	public Employee findById(int id);
+
 	
 	@Query("select sum(salary)from Employee")
 	public int totalSalary();

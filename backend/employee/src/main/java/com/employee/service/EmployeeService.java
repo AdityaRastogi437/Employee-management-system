@@ -20,15 +20,28 @@ public class EmployeeService {
 	    return emp;
 	}
 	
-	public Employee updateEmployee(int id,Employee employee) {
+	public Employee updateEmployee(int id,Employee newEmployee) {
 		
-		employee.setId(id);
-		Employee emp=employeeRepo.save(employee);
-		return emp;
+		return employeeRepo.findById(id)
+		.map(employee ->{
+			employee.setName(newEmployee.getName());
+			employee.setEmail(newEmployee.getEmail());
+			employee.setPassword(newEmployee.getPassword());
+			employee.setAddress(newEmployee.getAddress());
+			employee.setAttendance(newEmployee.getAttendance());
+			employee.setSalary(newEmployee.getSalary());
+			employee.setCatname(newEmployee.getCatname());
+			return employeeRepo.save(employee);
+		}).orElseThrow(()->new NotFoundException(id,"employee"));
 	}
 	
-	public void deleteEmployee(int id) {
-		  employeeRepo.deleteById(id);
+	public String deleteEmployee(int id) {
+		if(!employeeRepo.existsById(id)){
+			throw new NotFoundException(id, "employee");
+		}
+		employeeRepo.deleteById(id);
+	        return "User with the id " + id + " has been successfully deleted.";
+
 	}
 	
 	public List<Employee> getAllEmployee()
@@ -38,17 +51,9 @@ public class EmployeeService {
 	}
 	
 	public Employee getById(int id) {
-		Employee employee=null;
-		try
-		{
-			employee=this.employeeRepo.findById(id);
-			
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		return employee;
+		
+		return employeeRepo.findById(id)
+		.orElseThrow(()->new NotFoundException(id,"employee"));
 	}
 	
 	public long getEmployee() {

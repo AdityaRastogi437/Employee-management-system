@@ -9,7 +9,6 @@ import com.employee.entities.Category;
 @Repository
 public interface CategoryRepo extends JpaRepository<Category, Integer> {
 
-	public Category findById(int id);
 	
 	@Query("select count(id)from Category")
 	public int totalCategory();
