@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import url from '../api/bootApi'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default function Category() {
 
@@ -21,18 +22,29 @@ export default function Category() {
    )
   }
 
-  const deleteCategory=(id)=>{
-
-    axios.delete(`${url}/category/${id}`).then(response=>{
-      console.log(response.data);
-      // getCategoryData();
-      
-    },
-    error=>{
-      console.log(error);
-      
+  const deleteCategory = (id) => {
+    Swal.fire({
+      title:"Are You Sure",
+      text:"You want to Delete this Category",
+      icon:"warning",
+      showCancelButton:true,
+      confirmButtonText:"Delete",
+      confirmButtonColor:"#c9303f",
+      cancelButtonText:"Cancel",
+    }).then((result)=>{
+      if(result.isConfirmed){
+        axios.delete(`${url}/category/${id}`)
+  .then(result => {
+     console.log(result);
+     
+  }).catch((error)=>{
+    console.log(error);
+  })
+      }
     })
-  }
+
+ getCategoryData();
+} 
 
   const editCategory=(id)=>{
     navigate(`/dashboard/edit_category/${id}`);
@@ -40,7 +52,7 @@ export default function Category() {
 
   useEffect(()=>{
     getCategoryData();
-  },[])
+  },[getCategoryData])
 
   return (
   <div className='px-5 mt-3 vh-100'>

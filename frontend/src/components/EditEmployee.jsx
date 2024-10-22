@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import url from '../api/bootApi';
+import Swal from 'sweetalert2';
 
 export default function EditEmployee() {
     const [category,setCategory]=useState([])
@@ -58,15 +59,21 @@ export default function EditEmployee() {
       const handleSubmit=(e)=>{
         e.preventDefault();
         axios.put(`${url}/employee/${id}`,employee).then((response)=>{
-        console.log(response.data);   
-        },
+          if(response.data){
+            Swal.fire({
+              text:"user info Changed",
+              icon:"success"
+            });
+            navigate("/dashboard/employee");
+          }  
+        }).catch(
       (error)=>{
         console.log(error);
         
       })
         console.log(employee);
         
-      navigate("/dashboard/employee");
+     
       }
 
 

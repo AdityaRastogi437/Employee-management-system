@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import url from '../api/bootApi';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export default function AddEmployee() {
 
@@ -54,8 +55,13 @@ export default function AddEmployee() {
         e.preventDefault();
         
         axios.post(`${url}/employee/add`,employee).then((response)=>{
-        console.log(response.data);   
-        console.log(employee);
+          if(response.data){
+            Swal.fire({
+              text:"user Added",
+              icon:"success"
+            });
+          }
+          
         
         },
       (error)=>{

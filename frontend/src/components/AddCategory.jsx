@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import url from '../api/bootApi';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export default function AddCategory() {
 
@@ -17,10 +18,15 @@ export default function AddCategory() {
         e.preventDefault();
 
         axios.post(`${url}/add`,category).then(response =>{
-            console.log(response.data);
-            navigator("/dashboard/category");
-        } ,
-      error=>{
+            if(response.data){
+              Swal.fire({
+                text:"Category Added",
+                icon:"success"
+              });
+              navigator("/dashboard/category");
+            }
+            
+        } ).catch(error=>{
         console.log(error);
         
       })
@@ -39,7 +45,7 @@ export default function AddCategory() {
           <div className='mb-3'>
             <label htmlFor="category" className='heading'><strong>Category:</strong></label>
             <input type="text" name='category'  placeholder='Enter Category' className='form-control rounded-0' value={category.name}
-            onChange={(e)=>{setCategory({name:e.target.value})}}  />
+            onChange={(e)=>{setCategory({name:e.target.value})}} required />
           </div>
           <button className='btn btn-primary w-100 rounded-0 mb-2'>Add Category</button>
         </form>

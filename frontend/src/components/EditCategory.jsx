@@ -43,16 +43,20 @@ export default function EditCategory() {
     const handleSubmit=()=>{
    
         axios.put(`${url}/category/${id}`,category).then((response)=>{
-            console.log(response.data);
+            if(response.data){
+                Swal.fire({
+                    text:"Category name changed",
+                    icon:"success"
+                  });
+                  navigator("/dashboard/category");
+            }
               
-        },
-        (error)=>{
+        }).catch(error=>{
+
             console.log(error);
             
-        }
-    )
+        })
 
-    navigator("/dashboard/category");
     }
 
   return (

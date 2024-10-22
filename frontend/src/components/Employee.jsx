@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 import url from '../api/bootApi';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default function Employee() {
   
@@ -32,15 +33,26 @@ export default function Employee() {
    
    
     const handleDelete = (id) => {
-      axios.delete(`${url}/employee/${id}`)
+        Swal.fire({
+          title:"Are You Sure",
+          text:"You want to Delete this Employee",
+          icon:"warning",
+          showCancelButton:true,
+          confirmButtonText:"Delete",
+          confirmButtonColor:"#c9303f",
+          cancelButtonText:"Cancel",
+        }).then((result)=>{
+          if(result.isConfirmed){
+            axios.delete(`${url}/employee/${id}`)
       .then(result => {
          console.log(result);
-       
          
       }).catch((error)=>{
         console.log(error);
-      
       })
+          }
+        })
+
       getData();
     } 
 
@@ -89,4 +101,4 @@ export default function Employee() {
         </div>
       </div>
   )
-}
+    }
